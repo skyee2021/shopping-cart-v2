@@ -22,8 +22,30 @@ const renderUI = () => {
     })
   })
 
+  //總價
   // document.querySelector('.cart .total-price').textContent =cart.totalPrice()
   document.querySelector('.cart .total-price').textContent = '$' + cart.total()
+
+  
+
+  //數量欄位
+  document.querySelectorAll('.quantity').forEach(btn=>{
+    btn.addEventListener('input', (e)=>{
+      const newNum = document.querySelector('.quantity').value //監測輸入匡數量
+      console.log(newNum)
+      cart.changeNum(e.currentTarget.dataset['num'], newNum)
+
+      // const item_total = document.querySelector('#render').textContent =cart.itemtotal()
+      // console.log(document.querySelector('#render').textContent)
+      // const total = document.querySelector('.cart .total-price').textContent =cart.total()
+      renderUI()
+
+      //renderII
+      // console.log(total)
+      // document.querySelector('#render').innerHTML = `<td>$${item_total}</td>`
+      // document.querySelector('.total-price').innerHTML = `<td>$${total}</td>`
+    })
+  })
 }
 
 
@@ -40,6 +62,7 @@ const addToCart = (btn) =>{
     const price = parseFloat(card.querySelector('.price')
                       .textContent.replace('$','')) //文字轉數字
     const id = card.dataset['productId'];
+
     // console.log(price)
     // console.log(title)
 
@@ -71,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
   catbtn.forEach(addToCart)
   //變成一行:往上拉
 
+  
 
   //清空購物車
   document.querySelector('.empty-cart').addEventListener('click', () => {

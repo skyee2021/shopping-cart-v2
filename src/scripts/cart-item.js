@@ -16,6 +16,11 @@ class CartItem {
     // n = 1
     this.quantity += n
   }
+
+  // changeN(num){
+  //   this.quantity = num
+  //   // console.log(num)
+  // }
 }
 
 export default CartItem

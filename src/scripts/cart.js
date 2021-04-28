@@ -24,6 +24,12 @@ class Cart {
     }
 
     console.log(this.items);
+  }
+
+  //輸入匡數量
+  changeNum(num, n){
+    const foundItems = this.items.find(item => item.id == num)
+    foundItems.quantity = n
     
   }
 
@@ -35,6 +41,11 @@ class Cart {
     //filter會回傳新的陣列，所以前面要多用一個this.items去接
   }
 
+  itemtotal(){
+    return this.items.forEach(item => {
+      item.totalPrice()
+    })
+  }
 
   //總價
   total() {
