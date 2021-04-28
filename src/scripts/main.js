@@ -5,7 +5,11 @@ import '@fortawesome/fontawesome-free/css/all.css'
 //建立購物車
 import Cart from './cart'
 import CartItem from './cart-item'
+import { buildItemList } from './ui'
 const cart = new Cart()
+
+
+
 
 //點擊監聽：加入購物車：取出物品名稱＋價錢  
 const addToCart = (btn) =>{
@@ -34,6 +38,11 @@ const addToCart = (btn) =>{
     const item = new CartItem({id, title, price }) //縮成一行
     // console.log(item);
     cart.add(item) //加到購物車
+
+    //渲染到購物車頁面
+    const result = buildItemList(cart)
+    document.querySelector('.cart tbody').innerHTML = result
+    console.log(result);
 
   })
 };

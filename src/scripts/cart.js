@@ -13,7 +13,7 @@ class Cart {
 
     if(foundItem){
       //增加數量
-      foundItem.increment(5)
+      foundItem.increment()
     }else{
       this.items.push(item)
     }
