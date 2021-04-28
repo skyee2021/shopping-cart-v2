@@ -12,6 +12,6 @@
     "parcel": "^2.0.0-beta.2"
   },
   "dependencies": {
-    "bootstrap": "^4.6.0"
+    "bootstrap": "4.6.0"
   }
 }
