@@ -12,6 +12,16 @@ const cart = new Cart()
 const renderUI = () => {
   const result = buildItemList(cart)
   document.querySelector('.cart tbody').innerHTML = result
+
+  //刪除鍵事件
+  document.querySelectorAll('.remove-item-btn').forEach(btn =>{
+    btn.addEventListener('click', (e)=>{
+      // console.log(e.currentTarget.dataset['id']);
+      cart.removeItemId(e.currentTarget.dataset['id'])
+      renderUI()
+    })
+  })
+
   // document.querySelector('.cart .total-price').textContent =cart.totalPrice()
   document.querySelector('.cart .total-price').textContent = '$' + cart.total()
 }
@@ -68,5 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderUI() //畫面渲染
   })
 
-
+  //每次進入都渲染一次
+  // renderUI()
 })

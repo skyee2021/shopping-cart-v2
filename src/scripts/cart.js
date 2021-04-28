@@ -26,6 +26,17 @@ class Cart {
     console.log(this.items);
     
   }
+
+  //移出購物車
+  removeItemId(id){
+    //filter符合條件的留下，map是所有都留下。回傳新的陣列
+    this.items = this.items.filter(item => item.id != id)
+    //傳入的東西不符合傳入的id(選到的物件id)就留下在陣列內 ＝>刪除選到的id
+    //filter會回傳新的陣列，所以前面要多用一個this.items去接
+  }
+
+
+  //總價
   total() {
     // let total = 0
     // this.items.forEach(item => {
