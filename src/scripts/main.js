@@ -8,7 +8,13 @@ import CartItem from './cart-item'
 import { buildItemList } from './ui'
 const cart = new Cart()
 
-
+//購物車的畫面渲染
+const renderUI = () => {
+  const result = buildItemList(cart)
+  document.querySelector('.cart tbody').innerHTML = result
+  // document.querySelector('.cart .total-price').textContent =cart.totalPrice()
+  document.querySelector('.cart .total-price').textContent = '$' + cart.total()
+}
 
 
 //點擊監聽：加入購物車：取出物品名稱＋價錢  
@@ -39,10 +45,12 @@ const addToCart = (btn) =>{
     // console.log(item);
     cart.add(item) //加到購物車
 
-    //渲染到購物車頁面
-    const result = buildItemList(cart)
-    document.querySelector('.cart tbody').innerHTML = result
-    console.log(result);
+    //渲染到購物車頁面=>弄成function
+    // const result = buildItemList(cart)
+    // document.querySelector('.cart tbody').innerHTML = result
+    // console.log(result);
+
+    renderUI()
 
   })
 };
@@ -54,8 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
   //變成一行:往上拉
 
 
-
-
+  //清空購物車
+  document.querySelector('.empty-cart').addEventListener('click', () => {
+    cart.empty()
+    renderUI() //畫面渲染
+  })
 
 
 })

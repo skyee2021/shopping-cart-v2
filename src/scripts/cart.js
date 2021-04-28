@@ -7,6 +7,11 @@ class Cart {
   //   this.items = items
   // }
 
+  //清空購物車
+  empty() {
+    this.items = []
+  }
+
   add(item) {
     const foundItem = this.items.find(t => t.id == item.id)
     //陣列中的元素id等同於找到元素的id
@@ -18,9 +23,31 @@ class Cart {
       this.items.push(item)
     }
 
-    
     console.log(this.items);
     
+  }
+  total() {
+    // let total = 0
+    // this.items.forEach(item => {
+    //   total += item.totalPrice()
+    //   //陣列中每一條相加
+    // })
+
+    // return total
+
+
+    //高級寫法：歸納    累積值   目前值
+    // this.items.reduce(totle, current)
+    // return this.items.reduce(
+    //   (total, currentItem) => total + currentItem.totalPrice(), 
+    //   0
+    // )
+
+    //避免演算法的小數點計算
+    return Math.round(this.items.reduce(
+      (total, currentItem) => total + currentItem.totalPrice(),
+      0
+    )* 100) / 100
   }
 }
 

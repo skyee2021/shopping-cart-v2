@@ -6,6 +6,11 @@ class CartItem {
     this.price = price
     this.quantity = quantity
   }
+
+  totalPrice(){
+    return this.price * this.quantity
+  }
+
   increment(n = 1){
     //n預設值是1
     // n = 1
